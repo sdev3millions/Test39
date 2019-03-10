@@ -13,7 +13,6 @@ const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) { }
@@ -30,27 +29,5 @@ export class UserService {
 
     getAll() {
         return this.http.get<User[]>(`${environment.baseUrl}/users`);
-    }
-
-    getById(id: number) {
-        return this.http.get(`${environment.baseUrl}/users/` + id);
-    }
-
-    register(user: User) {
-        return this.http.post(`${environment.baseUrl}/users/register`, user);
-    }
-
-    update(user: User) {
-        return this.http.put(`${environment.baseUrl}/users/` + user.id, user);
-    }
-
-    delete(id: number) {
-        return this.http.delete(`${environment.baseUrl}/users/` + id);
-    }
-
-    postFile(data: any){
-
-        return this.http.post(`${environment.baseUrl}/users/register`, data);
-       
     }
 }

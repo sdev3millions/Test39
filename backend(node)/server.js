@@ -27,7 +27,6 @@ app.use(cors());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
-app.use('/schools', require('./schools/schools.controller'));
 
 // global error handler
 app.use(errorHandler);
@@ -43,22 +42,6 @@ var storage = multer.diskStorage({ //multers disk storage settings
         // var imageName = file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
         cb(null, imageName);
     }
-});
-
-var upload = multer({ //multer settings
-    storage: storage
-}).single('file');
-
-/** API path that will upload the files */
-app.post('/upload', function (req, res) {
-    upload(req, res, function (err) {
-        console.log(req.file);
-        if (err) {
-            res.json({ error_code: 1, err_desc: err });
-            return;
-        }
-        res.json({ error_code: 0, err_desc: null });
-    });
 });
 
 // start server
