@@ -7,7 +7,7 @@ const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 
 ////
-var multer = require('multer');
+
 app.use(function (req, res, next) { //allow cross origin requests
     res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
